@@ -8,7 +8,7 @@ import java.util.List;
 public class Composite extends Component {
     private List<Component> children = new ArrayList<>();
 
-    @Override
+    @Override //simula a substituicao de um metodo
     public void add(Component component) {
         children.add(component);
         component.setParent(this);
