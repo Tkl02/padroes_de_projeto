@@ -11,8 +11,6 @@ public class Main {
 // para cria uma "box" usa-se → Composite tree = new Composite();
 // para criar uma "folha" usa-se → Leaf leaf = new Leaf();
 
-
-
     public static void main(String[] args) {
         Composite tree = new Composite(); //criando arvore
 
