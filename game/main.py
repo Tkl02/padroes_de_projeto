@@ -1,14 +1,15 @@
-from pessoa import Pessoa
+from mobs import *
+from observer import *
+from state import *
 
-# p1 = Pessoa('william', 21)
-# p1.eat('banana')
-# p1.eat('banana')
-# p1.para_comer()
+torre = Torre()
+nome = input('Digite o nome do personagem: ')
+personagem = Personagem(nome)
+personagem.add_observer(XPObserver(personagem))
 
-person_2 = Pessoa('amanda', 21)
-person_2.eat('farofa')
-person_2.eat('farofa')
-person_2.para_comer()
-person_2.eat('banana')
-person_2.para_comer()
+def jogar_jogo(personagem):
+    game_state = GameState(personagem)
+    while game_state.state is not None:
+        game_state.state()
 
+jogar_jogo(personagem)
