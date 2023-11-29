@@ -1,5 +1,4 @@
-
-# Criando a classe Personagem
+#builder
 class Personagem:
     def __init__(self, nome):
         self.nome = nome
@@ -8,7 +7,6 @@ class Personagem:
         self.xp = 0
         self._observers = []
 
-# criando metodos de observer para o personagem    
     def add_observer(self, observer):
             self._observers.append(observer)
 
@@ -19,7 +17,6 @@ class Personagem:
             for observer in self._observers:
                 observer.update(self)
 
-# Criando mobs com o builder
 class MobsBuilder:
     def __init__(self):
         self.mob = Mobs()
@@ -70,10 +67,8 @@ class Mobs:
     def criar_demon():
         return MobsBuilder().set_nome('demon').set_forca(49).set_vida(5).set_xp(48).build()
 
-# Criando a classe Torre
 class Torre:
     def __init__(self):
-        # Criando instâncias de Mobs e chamando os métodos de criação de monstros
         self.andares = {
             1: [Mobs().criar_goblin()],
             2: [Mobs().criar_orc()],
@@ -81,14 +76,12 @@ class Torre:
             4: [Mobs().criar_dragon()],
             5: [Mobs().criar_demon()],
         }
-        # seleção de andar
     def escolher_andar(self, andar):
         if andar in self.andares:
             return self.andares[andar][0]
         else:
             return 'Andar não encontrado'
     
-# Criando função de level up
 def proximo_nivel(subject):
     if subject.xp >= 100:
         subject.vida += 1

@@ -1,8 +1,7 @@
+#observer
 class Observer:
     def update(self, subject):
         pass
-
-# Define a classe concreta do observador
 class XPObserver(Observer):
     def __init__(self, personagem):
         self.personagem = personagem
