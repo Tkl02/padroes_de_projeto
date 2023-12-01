@@ -5,11 +5,11 @@ from state import *
 from decorator import EquiparItemDecorator
 
 torre = Torre()
-nome = input('Digite o nome do personagem: ')
-item = input('1 - espada de aco / 2 - cajado magico: ')
+# nome = input('Digite o nome do personagem: ')
+# item = input('1 - espada de aco / 2 - cajado magico: ')
 
-# nome = 'pzl'
-# item = 1
+nome = 'pzl'
+item = 1
 
 if item == 1:
     item = 'espada de aco'

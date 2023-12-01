@@ -1,8 +1,9 @@
-#decorators.py
-
 class Componente:
     def operacao(self):
         pass
+
+    def get_item(self):
+        return None
 
 class Personagem(Componente):
     def __init__(self, nome):
@@ -10,7 +11,11 @@ class Personagem(Componente):
         self.forca = 10
         self.vida = 1
         self.xp = 0
+        self.item = None
         self._observers = []
+    
+    def get_item(self):
+        return self.item
 
     def add_observer(self, observer):
         self._observers.append(observer)
@@ -32,14 +37,15 @@ class Decorator(Componente):
     def operacao(self):
         self.componente.operacao()
 
-# Em decorators.py
-
-# Em decorators.py
-
 class EquiparItemDecorator(Decorator):
     def __init__(self, componente, nome):
         super().__init__(componente)
         self._nome = nome
+        self._item = None
+
+    def equipar_item(self, item):
+        print(f"{self.nome} equipou o item: {item}")
+        self.componente.item = item
 
     @property
     def nome(self):
@@ -56,10 +62,17 @@ class EquiparItemDecorator(Decorator):
         super().operacao()
         print(f"{self.nome} está pronto para a batalha!")
 
+    def get_item(self):
+        return self._item
+    
     # Adicionando métodos e propriedades para repassar chamadas ao componente original
     @property
     def forca(self):
         return self.componente.forca
+
+    @forca.setter
+    def forca(self, value):
+        self.componente.forca = value
 
     @property
     def vida(self):
@@ -76,3 +89,6 @@ class EquiparItemDecorator(Decorator):
     @xp.setter
     def xp(self, value):
         self.componente.xp = value
+
+    def notify_observers(self):
+        self.componente.notify_observers()

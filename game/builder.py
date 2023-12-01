@@ -1,4 +1,4 @@
-#builder
+#contruindo personagem 
 class Personagem:
     def __init__(self, nome):
         self.nome = nome
@@ -7,6 +7,7 @@ class Personagem:
         self.xp = 0
         self._observers = []
 
+# adicionando observadores
     def add_observer(self, observer):
             self._observers.append(observer)
 
@@ -40,6 +41,7 @@ class MobsBuilder:
     def build(self):
         return self.mob
 
+# contrutor de mobs
 class Mobs:
     def __init__(self):
         self.nome = ''
@@ -49,7 +51,7 @@ class Mobs:
 
     @staticmethod
     def criar_goblin():
-        return MobsBuilder().set_nome('goblin').set_forca(9).set_vida(1).set_xp(8).build()
+        return MobsBuilder().set_nome('goblin').set_forca(9).set_vida(1).set_xp(80).build()
 
     @staticmethod
     def criar_orc():
@@ -67,6 +69,7 @@ class Mobs:
     def criar_demon():
         return MobsBuilder().set_nome('demon').set_forca(49).set_vida(5).set_xp(48).build()
 
+# contrução da torre
 class Torre:
     def __init__(self):
         self.andares = {
